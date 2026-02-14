@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>∞ for my love ∞ · expensive bouquet</title>
+    <!-- Fonts & smoothness -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a0c0c 0%, #2d1515 100%);
+            min-height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+            color: #fff9f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main vessel — expensive feel with deep textures */
+        .love-letter {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(40, 18, 18, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 192, 203, 0.25);
+            box-shadow: 0 35px 80px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(200, 120, 120, 0.2) inset;
+            border-radius: 56px 56px 48px 48px;
+            padding: 2.8rem 2.2rem;
+        }
+
+        /* expensive details: satin & velvet touches */
+        .title-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .title-section h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 12vw, 6rem);
+            font-weight: 400;
+            background: linear-gradient(135deg, #ffcfcf, #ffa5b0, #ff7b89);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            text-shadow: 0 10px 25px #ff3b4a30, 2px 2px 0 #440000;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-heart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            color: #ffb7bb;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+        }
+
+        .sub-heart i {
+            font-size: 2rem;
+            color: #ff5e7c;
+            filter: drop-shadow(0 0 8px #ff99aa);
+        }
+
+        /* PHOTO GALLERY — expensive minimalism */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3.5rem 0 5rem 0;
+        }
+
+        .photo-frame {
+            background: #2f1919;
+            border-radius: 32px;
+            padding: 1rem;
+            box-shadow: 0 25px 40px -15px #200000, 0 0 0 2px #bc6f6f1a, 0 0 0 4px #ffd5d51a;
+            transition: 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            border: 1px solid #ffb6b64d;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.02) translateY(-6px);
+            border-color: #ffb0bb;
+            box-shadow: 0 40px 55px -10px #ff99aa70, 0 0 0 3px #ffcccc;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1.2;
+            object-fit: cover;
+            border-radius: 24px;
+            background: #5f4040;
+            display: block;
+            filter: brightness(0.95) contrast(1.1);
+            border: 1px solid #ffc0cb66;
+        }
+
+        /* interactive bouquet — each flower = secret message */
+        .bouquet-title {
+            font-size: 2.6rem;
+            text-align: center;
+            font-family: 'DM Serif Display', serif;
+            color: #fec8cd;
+            margin: 2.8rem 0 1.8rem 0;
+            text-shadow: 0 0 18px #ff7c9f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .bouquet-title i {
+            font-size: 3rem;
+            background: #572b2b;
+            padding: 0.6rem;
+            border-radius: 100%;
+            box-shadow: 0 0 0 3px #ffb2b2;
+        }
+
+        .flower-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            gap: 2rem 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        /* each flower is interactive + holds long message */
+        .flower {
+            flex: 0 1 150px;
+            min-width: 120px;
+            max-width: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0 10px 15px #2f0000);
+        }
+
+        .flower:hover {
+            transform: translateY(-20px) scale(1.08);
+            filter: drop-shadow(0 20px 25px #ff99bb80);
+        }
+
+        .flower-icon {
+            font-size: 5.5rem;
+            line-height: 1;
+            transition: 0.2s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* unique colors per flower (pink/red/love) */
+        .flower[data-index="0"] .flower-icon { color: #ffb3c6; text-shadow: 0 0 25px #ff80a5; }  /* peony */
+        .flower[data-index="1"] .flower-icon { color: #ff708d; text-shadow: 0 0 35px #ff3b5c; }  /* rose */
+        .flower[data-index="2"] .flower-icon { color: #ffb347; text-shadow: 0 0 30px #ffae42; }  /* marigold warmth */
+        .flower[data-index="3"] .flower-icon { color: #f9acb5; text-shadow: 0 0 30px #ff8da1; }  /* camellia */
+        .flower[data-index="4"] .flower-icon { color: #ff99aa; text-shadow: 0 0 40px #ff4f75; }  /* tulip */
+        .flower[data-index="5"] .flower-icon { color: #ff708d; text-shadow: 0 0 35px #ff3b5c; }  /* second rose */
+        .flower[data-index="6"] .flower-icon { color: #ffb3c6; text-shadow: 0 0 25px #ff80a5; }  /* peony repeat */
+        .flower[data-index="7"] .flower-icon { color: #ff99aa; text-shadow: 0 0 40px #ff4f75; }  /* tulip */
+
+        .flower-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: #462626c0;
+            backdrop-filter: blur(2px);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #ffbaba;
+            color: #ffe6e6;
+            letter-spacing: 1px;
+        }
+
+        /* message box — long luxurious message area */
+        .message-container {
+            background: #311e1ec0;
+            backdrop-filter: blur(18px);
+            border: 2px solid #ffb8b8;
+            border-radius: 70px 70px 40px 40px;
+            padding: 2.5rem 3rem;
+            margin: 3rem 0 1.5rem;
+            box-shadow: 0 30px 50px -15px #710000, 0 0 0 2px #ffd0d0 inset;
+            transition: all 0.5s;
+        }
+
+        .long-message {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            color: #fff0f0;
+            text-shadow: 2px 2px 2px #2f0000;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #461f1f40;
+            border-radius: 50px;
+            padding: 2rem 1rem;
+            border: 1px dashed #ffb4b4;
+            word-break: break-word;
+        }
+
+        .message-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            color: #ffb5c4;
+            font-size: 1.5rem;
+            border-top: 2px solid #ffa5a5;
+            padding-top: 1rem;
+        }
+
+        .message-label i {
+            font-size: 2rem;
+            opacity: 0.9;
+            color: #ff9090;
+        }
+
+        /* responsive fine tuning */
+        @media (max-width: 950px) {
+            .gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .love-letter { padding: 2rem 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: 1fr; }
+            .flower-grid { gap: 0.8rem; }
+            .flower { flex-basis: 90px; }
+            .flower-icon { font-size: 4rem; }
+            .message-container { padding: 1.5rem; }
+        }
+
+        @media (max-width: 380px) {
+            .flower-label { font-size: 0.9rem; padding: 0.2rem 0.6rem; }
+        }
+
+        /* extra love touches */
+        .floating-petals {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, #ff447730 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, #ffa5b030 0%, transparent 40%);
+        }
+
+        /* all photos are unique with subtle emoji overlay (just for expensive vibe) */
+        .photo-frame::after {
+            content: "🌹🥀🌷";
+            font-size: 1.8rem;
+            opacity: 0.15;
+            position: absolute;
+            bottom: 5px; right: 10px;
+            pointer-events: none;
+        }
+
+        .photo-frame {
+            position: relative;
+        }
+
+        /* expensive ribbon for some frames */
+        .photo-frame:nth-child(1) { border-top: 8px solid #ffa5b0; }
+        .photo-frame:nth-child(3) { border-bottom: 8px solid #ffb7bb; }
+        .photo-frame:nth-child(2) { border-left: 8px solid #ffa5b0; border-right: 8px solid #ffb7bb; }
+    </style>
+</head>
+<body>
+    <div class="floating-petals"></div>
+    <main class="love-letter">
+        <div class="title-section">
+            <h1>for my lablab</h1>
+            <div class="sub-heart">
+                <i class="fas fa-heart"></i>
+                <span>Bridgel Ann Auditor</span>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <!-- photos gallery (responsive) expensive minimalism with actual unsplash placeholder images — they look dreamy and high-end -->
+        <div class="gallery">
+            <div class="photo-frame"><img src="img1.jpg" alt="romantic sunset" loading="lazy"></div>
+            <div class="photo-frame"><img src="img2.jpg" alt="love couple" loading="lazy"></div>
+            <div class="photo-frame"><img src="img3.jpg" alt="red rose heart" loading="lazy"></div>
+            <div class="photo-frame"><img src="img4.jpg" alt="pink flowers" loading="lazy"></div>
+        </div>
+
+        <!-- Interactive bouquet section -->
+        <div class="bouquet-title">
+            <i class="fas fa-heart"></i>
+            <span>whisper bouquet</span>
+            <i class="fas fa-heart"></i>
+        </div>
+
+        <div class="flower-grid" id="flowerGrid">
+            <!-- each flower data-index used for message selection; icons represent luxury flowers -->
+            <div class="flower" data-index="0">
+                <span class="flower-icon">🌷</span>
+                <span class="flower-label">peony</span>
+            </div>
+            <div class="flower" data-index="1">
+                <span class="flower-icon">🌹</span>
+                <span class="flower-label">red rose</span>
+            </div>
+            <div class="flower" data-index="2">
+                <span class="flower-icon">🌻</span>
+                <span class="flower-label">marigold</span>
+            </div>
+            <div class="flower" data-index="3">
+                <span class="flower-icon">🌸</span>
+                <span class="flower-label">camellia</span>
+            </div>
+            <div class="flower" data-index="4">
+                <span class="flower-icon">🌺</span>
+                <span class="flower-label">tulip</span>
+            </div>
+            <div class="flower" data-index="5">
+                <span class="flower-icon">🥀</span>
+                <span class="flower-label">eternal rose</span>
+            </div>
+            <div class="flower" data-index="6">
+                <span class="flower-icon">🌷</span>
+                <span class="flower-label">garden peony</span>
+            </div>
+            <div class="flower" data-index="7">
+                <span class="flower-icon">🌹</span>
+                <span class="flower-label">darling rose</span>
+            </div>
+        </div>
+
+        <!-- long message container, dynamic with expensive look -->
+        <div class="message-container" id="messageBox">
+            <div class="long-message" id="flowerMessage">
+                🌹 touch any flower to read a long love note, each holds a universe of words for you 🌹
+            </div>
+            <div class="message-label">
+                <i class="fas fa-feather-alt"></i>
+                <span id="activeFlowerName">🌹</span>
+                <i class="fas fa-feather-alt"></i>
+            </div>
+        </div>
+
+        <!-- small footer note expensive details -->
+        <div style="text-align: center; margin-top: 3rem; font-size: 1.2rem; color: #ffb2b2; letter-spacing: 3px; border-top: 2px solid #b75969; padding-top: 1.5rem;">
+            <i class="fas fa-flower" style="color: #ff99aa;"></i> 
+            forever yours — with every petal 
+            <i class="fas fa-flower" style="color: #ff99aa;"></i>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            // each flower corresponds to a long, unique love letter (pink/red/love theme)
+            const messages = [
+                // peony (index 0)
+                `My dearest lablab,
+
+                    If I had one peony for every time I thought about your smile, the whole world would turn pink.
+
+                    You are the softness I never knew na kinahanglan.
+                    Your laugh is so bright, even the stars would feel jealous.
+
+                    I could write a thousand poems, pero none of them can explain the way you tilt your head when you’re curious. It’s simple. It’s cute. It’s you.
+
+                    Every petal of this peony softly whispers your name.
+                    Every bloom reminds me how lucky I am.
+
+                    I love you more than the moon, more than every season that comes and goes.
+                    Palangga, please never forget this.
+
+                    You are my once in a lifetime. Always.`,
+                
+                // red rose (index 1)
+                `A single red rose is never enough to explain how fast my heart beats when I see you.
+
+                    You are my deepest red.
+                    love, and passion.
+                    A love that burns steady and true.
+
+                    From the first moment I saw you, I knew ikaw na gyud. My soul felt it. No doubts. No fears.
+
+                    Every thorn reminds me that love needs courage.
+                    And because of you, You make me brave.
+
+                    This message is long because my love has no limit.
+                    It keeps growing.
+                    Like a wild rose climbing a fence in summer.
+
+                    keep going.
+                    Stronger every day.`,
+                
+                // marigold (index 2)
+                `Marigolds follow the sun.
+                    And I follow you.
+
+                    You are my warmth.
+                    My golden hour.
+                    my power.
+
+                    You light up every room you enter.
+                    Your presence feels like a gentle fire. Init, pero soft.
+
+                    I have written you countless letters in my mind.
+                    But this one is simple and real.
+
+                    You are my favorite place to come home to.
+                    Ikaw akong pahulay.
+
+                    Your heart is the most beautiful thing I have ever held.
+                    Pure. Warm. Real.
+
+                    Stay with me.
+                    My sunshine.`,
+                
+                // camellia (index 3)
+                `Camellias mean my destiny is in your hands.
+                    And it is true.
+
+                    I never believed in fate until you held my hand.
+                    That moment changed everything.
+
+                    Your kindness unravels me.
+                    Not in chaos.
+                    In comfort.
+
+                    I could talk for hours about the small things.
+                    The way you tuck your hair.
+                    Your soft morning voice.
+                    The way you say my name like it matters.
+
+                    This message is a long embrace.
+                    Steady. Warm. Certain.
+
+                    Thank you for being exactly who you are.
+                    Perfect.
+                    Rare.
+                    Mine.`,
+                
+                // tulip (index 4)
+                `Tulips whisper perfect love.
+                    And that is you.
+
+                    I have imagined our future many times.
+                    Lazy Sundays.
+                    Warm cups of tea.
+                    Growing old while we still hold hands.
+
+                    Every version includes you.
+                    No exceptions.
+
+                    You are my favorite thought.
+                    My sweetest daydream.
+
+                    I promise to cherish you.
+                    To choose you every day.
+                    To fill your life with pink and red until your heart overflows.
+
+                    You are my tulip.
+                    My heart’s bloom.`,
+                
+                // eternal rose (index 5) – long message again
+                `If I could give you one thing, it would be the ability to see yourself through my eyes.
+
+                        You would see someone stunning.
+                        Deeply kind.
+                        Irreplaceable.
+
+                        This rose may last forever in pixels,
+                        But my love lasts forever in truth.
+
+                        I adore your quirks.
+                        Your fierce heart.
+                        Your gentle soul.
+
+                        This message is a promise.
+                        I will stand by you through every storm,
+                        Through every rainbow.
+
+                        You are my everything.`,
+                
+                // garden peony (index 6)
+                `Garden peonies symbolize a happy life.
+                    And you are my happiness.
+
+                    I used to think love was just a word.
+                    Then you happened.
+                    Now I cannot imagine a single day without you.
+
+                    I love your mind.
+                    Your spirit.
+                    The way you love me back.
+
+                    I will keep writing you long letters until my hands stop moving.
+
+                    You are my favorite story.
+                    And it never ends.`,
+                
+                // darling rose (index 7)
+                `One last rose.
+                    One last long note.
+
+                    I hope you feel treasured every single moment.
+                    You deserve bouquets, stars, and every beautiful thing in the world.
+
+                    I am so grateful for you.
+                    This flower, like all the others, holds a universe of emotions.
+
+                    Thank you for being my girlfriend.
+                    My best friend.
+                    My love.
+
+                    Pink for your sweetness.
+                    Red for my passion.
+                    You are the perfect harmony of both.
+
+                    Always.`
+            ];
+
+            const flowerElements = document.querySelectorAll('.flower');
+            const messageDiv = document.getElementById('flowerMessage');
+            const activeFlowerSpan = document.getElementById('activeFlowerName');
+            const flowerLabels = ['peony', 'red rose', 'marigold', 'camellia', 'tulip', 'eternal rose', 'garden peony', 'darling rose'];
+
+            // initial state
+            let currentIndex = -1; // none selected
+
+            // function to update message based on index
+            function showMessageForIndex(index) {
+                if (index >= 0 && index < messages.length) {
+                    messageDiv.textContent = messages[index];
+                    activeFlowerSpan.innerHTML = `💌 ${flowerLabels[index]} · your flower speaks`;
+                } else {
+                    // fallback (should not happen)
+                }
+            }
+
+            // add click handler to each flower
+            flowerElements.forEach((flower, idx) => {
+                flower.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // update message based on its data-index (idx matches array)
+                    showMessageForIndex(idx);
+                    // optional spark: add a tiny heart effect
+                    const icon = flower.querySelector('.flower-icon');
+                    icon.style.transform = 'scale(1.3)';
+                    setTimeout(() => { icon.style.transform = 'scale(1)'; }, 200);
+                });
+
+                // optional hover effect on message preview (preview not needed, but we add a subtle hint)
+                flower.addEventListener('mouseenter', () => {
+                    // just to show that it's interactive
+                    flower.style.cursor = 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'><text x=\'0\' y=\'20\' font-size=\'20\'>❤️</text></svg>"), auto';
+                });
+            });
+
+            // optional: set default message on first flower to make it more welcoming (not necessary, but nice)
+            // but we want a default neutral, so keep as is.
+
+            // for extra engagement, we can set a random flower on page load (make it alive)
+            window.addEventListener('load', function() {
+                // random flower after 1 second to show it's interactive
+                setTimeout(() => {
+                    const randomIdx = Math.floor(Math.random() * flowerElements.length);
+                    // gently simulate click to show a love note
+                    showMessageForIndex(randomIdx);
+                    // also highlight that flower gently
+                    flowerElements[randomIdx].style.transition = 'all 0.3s';
+                    flowerElements[randomIdx].style.transform = 'translateY(-8px)';
+                    setTimeout(() => {
+                        flowerElements[randomIdx].style.transform = '';
+                    }, 500);
+                }, 400);
+            });
+        })();
+    </script>
+
+    <!-- small style for flower icon animations -->
+    <style>
+        .flower-icon {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .flower:active .flower-icon {
+            transform: scale(0.9);
+        }
+        /* expensive, smooth fonts */
+        .long-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+        }
+        .flower-label {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+    </style>
+</body>
+</html>
